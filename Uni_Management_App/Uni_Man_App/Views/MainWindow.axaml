@@ -53,7 +53,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Content="Login as a Student" HorizontalAlignment="Center" Click="LoginAsStudent_Click"/>
-            <Button Grid.Column="1" Content="Login as a Teacher" HorizontalAlignment="Center"/>
+            <Button Grid.Column="1" Content="Login as a Teacher" HorizontalAlignment="Center" Click="LoginAsTeacher_Click"/>
              
         </Grid>
     </StackPanel>
