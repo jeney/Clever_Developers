@@ -35,8 +35,7 @@ public partial class StudentWindowViewModel : ViewModelBase
         new ListItemTemplate(typeof(HomeViewModel)),
         new ListItemTemplate(typeof(EnrollmentsViewModel)),
         new ListItemTemplate(typeof(SubjectsViewModel)),
-    
-    
+        
     };
 
 

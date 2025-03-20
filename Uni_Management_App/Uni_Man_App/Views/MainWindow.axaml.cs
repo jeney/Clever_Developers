@@ -8,4 +8,11 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
+    
+    private void LoginAsStudent_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var studentWindow = new StudentWindow();
+        studentWindow.Show();  // Opens StudentWindow
+        this.Close();          // Closes MainWindow
+    }
 }
