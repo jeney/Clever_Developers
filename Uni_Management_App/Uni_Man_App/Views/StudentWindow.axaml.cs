@@ -12,4 +12,11 @@ public partial class StudentWindow : Window
         InitializeComponent();
         DataContext = new StudentWindowViewModel(); // Ensure ViewModel is set
     }
+    
+    private void LogOut_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var mainWindow = new MainWindow();
+        mainWindow.Show();  // Opens StudentWindow
+        this.Close();          // Closes MainWindow
+    }
 }
