@@ -1,52 +1,70 @@
-# Prerequisites
-*.d
+# Build artifacts
+bin/
+obj/
+out/
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
 
-# Linker output
-*.ilk
-*.map
-*.exp
+# Visual Studio files
+.vs/
 
-# Precompiled Headers
-*.gch
-*.pch
+# Rider files
+.idea/
+*.sln.iml
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+# Logs and database
+*.log
+*.tlog
+*.pdb
+*.mdb
+*.dbmdl
+*.jfm
 
-# Shared objects (inc. Windows DLLs)
+# Test results
+TestResults/
+
+# Compiled DLLs and executables
+*.exe
 *.dll
 *.so
-*.so.*
 *.dylib
+*.nupkg
+*.snupkg
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+# Generated files
+Generated/
+*.g.cs
+*.g.i.cs
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
+# NuGet packages
+*.nupkg
+packages/
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# Dotnet tools
+.dotnet_tools/
+
+# Entity Framework migrations
+Migrations/
+
+# ASP.NET files
+appsettings.*.json
+secrets.json
+
+# Temporary files
+*.tmp
+*.bak
+
+# Rider and Resharper files
+*.DotSettings.user
+
+# Coverage and profiling
+coverage/
+*.coverlet*
+*.opencover.xml
+
+# Global JetBrains Rider settings
+/.idea/
