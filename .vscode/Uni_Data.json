@@ -1,0 +1,57 @@
+{
+    "Students": [
+      {
+        "Id": 1,
+        "Name": "asd",
+        "Username": "asd",
+        "Password": "student",
+        "EnrolledSubjects": [101, 102]
+      },
+      {
+        "Id": 2,
+        "Name": "smth",
+        "Username": "smth",
+        "Password": "student",
+        "EnrolledSubjects": [101]
+      }
+    ],
+    "Teachers": [
+      {
+        "Id": 1,
+        "Name": "valami",
+        "Username": "valami",
+        "Password": "teacher",
+        "Subjects": [101, 103]
+      },
+      {
+        "Id": 2,
+        "Name": "idk",
+        "Username": "idk",
+        "Password": "teacher",
+        "Subjects": [102]
+      }
+    ],
+    "Subjects": [
+      {
+        "Id": 101,
+        "Name": "Introduction to Programming",
+        "Description": "Basic programming concepts with C#",
+        "TeacherId": 1,
+        "StudentsEnrolled": [1, 2]
+      },
+      {
+        "Id": 102,
+        "Name": "Database Systems",
+        "Description": "Relational databases and SQL",
+        "TeacherId": 2,
+        "StudentsEnrolled": [1]
+      },
+      {
+        "Id": 103,
+        "Name": "Algorithms",
+        "Description": "Data structures and algorithms",
+        "TeacherId": 1,
+        "StudentsEnrolled": []
+      }
+    ]
+  }
