@@ -1,20 +1,71 @@
-<Window xmlns="https://github.com/avaloniaui"
+<Window x:Class="Data_vis.Views.MainWindow"
+        xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:Data_vis.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Avalonia;assembly=LiveChartsCore.SkiaSharpView.Avalonia"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="Data_vis.Views.MainWindow"
+        xmlns:vm="using:Data_vis.ViewModels"
+        Title="Data_vis"
+        d:DesignHeight="450"
+        d:DesignWidth="800"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="Data_vis">
-
+        mc:Ignorable="d">
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
+            to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel />
     </Design.DataContext>
-
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <!-- Control Panel -->
+        <StackPanel Grid.Column="0"
+                    Margin="10"
+                    Spacing="10">
+            <TextBlock Margin="0,0,0,10"
+                       FontSize="16"
+                       FontWeight="Bold"
+                       Text="Control Panel" />
+            <ListBox HorizontalAlignment="Stretch"
+                     ItemsSource="{Binding Items}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Margin="0,10,0,0"
+                    Command="{Binding AddChart}"
+                    Content="Add Chart" />
+            <!-- Custom Query Section -->
+            <TextBlock Margin="0,20,0,10"
+                       FontSize="14"
+                       FontWeight="Bold"
+                       Text="Custom Query" />
+            <ComboBox Margin="0,5,0,0"
+                      ItemsSource="{Binding SelectFilterOptions}"
+                      SelectedItem="{Binding SelectFilter}" />
+            <ComboBox Margin="0,5,0,0"
+                      ItemsSource="{Binding FromFilterOptions}"
+                      SelectedItem="{Binding FromFilter}" />
+            <ComboBox Margin="0,5,0,0"
+                      ItemsSource="{Binding WhereFilterOptions}"
+                      SelectedItem="{Binding WhereFilter}" />
+            <Button Margin="0,10,0,0"
+                    Command="{Binding ExecuteQueryCommand}"
+                    Content="Execute Query" />
+        </StackPanel>
+        <!-- Dashboard -->
+        <!-- Pie Chart (Second Column) -->
+        <lvc:PieChart Grid.Column="1"
+                      Series="{Binding Pie}" />
+        <!-- Cartesian Chart (Third Column) -->
+        <lvc:CartesianChart Grid.Column="2"
+                            Title="{Binding Title}"
+                            Series="{Binding Line}" />
+    </Grid>
 </Window>
