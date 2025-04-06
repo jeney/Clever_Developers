@@ -32,6 +32,12 @@ public partial class MainWindowViewModel : ViewModelBase
 	[ObservableProperty]
 	private ObservableCollection<string> whereFilterOptions;
 
+	[ObservableProperty]
+	private bool isPieChartVisible = true;
+
+	[ObservableProperty]
+	private bool isCartesianChartVisible = true;
+
 	public MainWindowViewModel()
 	{
 		items = new ObservableCollection<string>
@@ -41,11 +47,6 @@ public partial class MainWindowViewModel : ViewModelBase
 			"Query 3",
 			"Query 4",
 			"Query 5",
-			"Query 6",
-			"Query 7",
-			"Query 8",
-			"Query 9",
-			"Query 10",
 		};
 
 		// Initialize filter options
@@ -58,6 +59,30 @@ public partial class MainWindowViewModel : ViewModelBase
 	private void AddChart()
 	{
 
+	}
+
+	[RelayCommand]
+	public void ShowPieChart()
+	{
+		IsPieChartVisible = true;
+	}
+
+	[RelayCommand]
+	public void RemovePieChart()
+	{
+		IsPieChartVisible = false;
+	}
+
+	[RelayCommand]
+	public void ShowCartesianChart()
+	{
+		IsCartesianChartVisible = true;
+	}
+
+	[RelayCommand]
+	public void RemoveCartesianChart()
+	{
+		IsCartesianChartVisible = false;
 	}
 
 	[RelayCommand]
