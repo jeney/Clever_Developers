@@ -40,6 +40,10 @@ public partial class MainWindowViewModel : ViewModelBase
 
 	public MainWindowViewModel()
 	{
+		selectFilter = string.Empty;
+		fromFilter = string.Empty;
+		whereFilter = string.Empty;
+
 		items = new ObservableCollection<string>
 		{
 			"Query 1",
