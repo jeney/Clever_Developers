@@ -4,6 +4,7 @@ using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
+using Data_vis.Helpers;
 using Data_vis.ViewModels;
 using Data_vis.Views;
 
@@ -18,9 +19,12 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+	    var csvHelper = new CsvReaderHelper();
+	    csvHelper.ReadCsvFile();
+
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
+            // Avoid duplicate validations from both Avalonia and the CommunityToolkit.
             // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
             DisableAvaloniaDataAnnotationValidation();
             desktop.MainWindow = new MainWindow
@@ -45,3 +49,4 @@ public partial class App : Application
         }
     }
 }
+
