@@ -6,6 +6,8 @@ using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Drawing.Geometries;
 using LiveChartsCore.SkiaSharpView.VisualElements;
+using LiveChartsCore.SkiaSharpView.Painting;
+using SkiaSharp;
 
 namespace Data_vis.ViewModels;
 
@@ -108,20 +110,30 @@ public partial class MainWindowViewModel : ViewModelBase
 		};
 	public ISeries[] Line { get; set; } =
 	[
-		new LineSeries<double>
+		new ColumnSeries<double>
 			{
 				Values = [2, 1, 3, 5, 3, 4, 6],
-				Fill = null,
-				GeometrySize = 20
+
+
 			},
-			new LineSeries<int, StarGeometry>
+			new ColumnSeries<double>
 			{
 				Values = [4, 2, 5, 2, 4, 5, 3],
-				Fill = null,
-				GeometrySize = 20,
+
 		}
 	];
-
+	public Axis[] XAxes { get; set; } =
+    [
+        new Axis
+        {
+            Labels = ["Category 1", "Category 2", "Category 3"],
+            LabelsRotation = 0,
+            SeparatorsPaint = new SolidColorPaint(new SKColor(200, 200, 200)),
+            SeparatorsAtCenter = false,
+            TicksPaint = new SolidColorPaint(new SKColor(35, 35, 35)),
+            TicksAtCenter = true,
+		}
+	];
 	public LabelVisual Title { get; set; } =
 		new LabelVisual
 		{
@@ -129,4 +141,5 @@ public partial class MainWindowViewModel : ViewModelBase
 			TextSize = 25,
 			Padding = new LiveChartsCore.Drawing.Padding(15)
 		};
+
 }

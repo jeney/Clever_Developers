@@ -80,6 +80,7 @@
         <lvc:CartesianChart Grid.Column="2"
                             Title="{Binding Title}"
                             Series="{Binding Line}"
+							XAxes="{Binding XAxes}"
                             IsVisible="{Binding IsCartesianChartVisible}"/>
     </Grid>
 </Window>
