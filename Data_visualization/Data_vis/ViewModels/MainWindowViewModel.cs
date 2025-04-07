@@ -61,11 +61,6 @@ public partial class MainWindowViewModel : ViewModelBase
 		whereFilterOptions = new ObservableCollection<string> { "Condition1", "Condition2", "Condition3" };
 	}
 
-	[RelayCommand]
-	private void AddChart()
-	{
-
-	}
 
 	[RelayCommand]
 	public void ShowPieChart()

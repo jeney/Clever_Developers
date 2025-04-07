@@ -18,11 +18,14 @@ using Data_vis.Models;
 			{
 				csvReader.Context.RegisterClassMap<ClassMap>();
 				var records = csvReader.GetRecords<VideoGameSales>().ToList();
+
+				foreach (var record in records)
+				{
+					Console.WriteLine($"{record.Name} - {record.Platform} ({record.Year})");
+				}
+
 				return records;
-				// foreach (var record in records)
-				// {
-				// 	Console.WriteLine($"{record.Name} - {record.Platform} ({record.Year})");
-				// }
+
 			}
 		}
 	}
