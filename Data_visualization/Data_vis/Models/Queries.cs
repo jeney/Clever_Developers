@@ -1,14 +1,18 @@
-using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
+using Data_vis.Helpers;
 
-namespace LINQ;
+namespace Data_vis.Models;
 
 public class Queries
 {
-	public List<Data> Datas { get; set; } = CsvReader.ReadCsv("vgsales.csv");
-	public List<PieChartData> PieChart1() //total sales per year
+	public List<VideoGameSales> Datas { get; set; }
+
+	public Queries()
+	{
+		var reader = new CsvReaderHelper();
+		Datas = reader.ReadCsvFile();
+	}	public List<PieChartData> PieChart1() //total sales per year
 	{
 		List<PieChartData> Slices = new List<PieChartData>();
 		var groupedDataset = Datas
@@ -22,7 +26,7 @@ public class Queries
 			.Take(6);
 		foreach (var group in groupedDataset)
 		{
-			PieChartData singleSlice = new PieChartData(group.TotalSales, group.Year.ToString());
+			PieChartData singleSlice = new PieChartData(group.TotalSales ?? 0f, group.Year.ToString());
 			Slices.Add(singleSlice);
 		}
 		return Slices;
@@ -41,7 +45,7 @@ public class Queries
 			.Take(6);
 		foreach (var group in groupedDataset)
 		{
-			PieChartData singleSlice = new PieChartData(group.TotalSales, group.Genre);
+			PieChartData singleSlice = new PieChartData(group.TotalSales ?? 0f, group.Genre);
 			Slices.Add(singleSlice);
 		}
 		return Slices;
@@ -61,7 +65,7 @@ public class Queries
 			.Take(6);
 		foreach (var group in groupedDataset)
 		{
-			PieChartData singleSlice = new PieChartData(group.TotalSales, group.Platform);
+			PieChartData singleSlice = new PieChartData(group.TotalSales ?? 0f, group.Platform);
 			Slices.Add(singleSlice);
 		}
 		return Slices;
@@ -138,7 +142,7 @@ public class Queries
 			.OrderBy(g => g.Genre);
 		foreach (var group in groupedDataset)
 		{
-			BarChartData singlePoint = new BarChartData(group.TotalSales, group.Genre.ToString());
+			BarChartData singlePoint = new BarChartData(group.TotalSales ?? 0f, group.Genre.ToString());
 			Points.Add(singlePoint);
 		}
 		return Points;
@@ -157,7 +161,7 @@ public class Queries
 			.OrderBy(g => g.Genre);
 		foreach (var group in groupedDataset)
 		{
-			BarChartData singlePoint = new BarChartData(group.AverageSales, group.Genre.ToString());
+			BarChartData singlePoint = new BarChartData(group.AverageSales ?? 0f, group.Genre.ToString());
 			Points.Add(singlePoint);
 		}
 		return Points;
@@ -194,7 +198,7 @@ public class Queries
 			.OrderBy(g => g.Year);
 		foreach (var group in groupedDataset)
 		{
-			BarChartData singlePoint = new BarChartData(group.TotalSales, group.Year.ToString());
+			BarChartData singlePoint = new BarChartData(group.TotalSales ?? 0f, group.Year.ToString());
 			Points.Add(singlePoint);
 		}
 		return Points;
