@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+
+namespace Uni_Man_App.ViewModels;
+
+public partial class TeacherWindowViewModel : ViewModelBase
+{
+    [ObservableProperty] private bool _isPaneOpen = true;
+
+    [ObservableProperty] private ViewModelBase _currentPage = new SubjectsViewModel();
+    
+    
+    [ObservableProperty] private ListItemTemplate? _selectedListItem;
+    
+    partial void OnSelectedListItemChanged(ListItemTemplate? value)
+    {
+        if (value is null) return;
+        var instance = Activator.CreateInstance(value.ModelType);
+        if (instance is null) return;
+        CurrentPage = (ViewModelBase)instance;
+    }
+    
+    [RelayCommand]
+    private void TriggerPane()
+    {
+        IsPaneOpen = !IsPaneOpen;
+    }
+    
+    
+    public ObservableCollection<ListItemTemplate> Items { get; } = new()
+    {
+        new ListItemTemplate(typeof(EnrollmentsViewModel)),
+        new ListItemTemplate(typeof(SubjectsViewModel)),
+        
+    };
+    
+    
+}
