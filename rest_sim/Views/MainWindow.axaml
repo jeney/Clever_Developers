@@ -1,0 +1,36 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:rest_sim.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="rest_sim.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="rest_sim">
+	<Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <StackPanel>
+        <Button Content="Start Simulation"
+                Command="{Binding StartSimulationCommand}"
+                Margin="10" />
+
+        <ItemsControl ItemsSource="{Binding ActiveRecipes}" Margin="10">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="vm:RecipeProgressViewModel">
+                    <Border Padding="10" Margin="5" Background="#a9a9a9" CornerRadius="5">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Recipe.Name}" FontSize="16" FontWeight="Bold" />
+                            <TextBlock Text="{Binding CurrentStep}" Margin="0 5 0 0" />
+                            <ProgressBar Value="{Binding ProgressPercentage}"
+                                       Height="20" Margin="0 5" />
+                            <TextBlock Text="{Binding IsCompleted, StringFormat='Completed: {0}'}" />
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+</Window>
